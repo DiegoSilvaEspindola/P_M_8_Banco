@@ -41,9 +41,11 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public abstract double getSaldo();
+    public abstract double consultaSaldo();
 
     public abstract void sacar(double valor);
+
+    public abstract void depositar(double valor);
 
 
 
@@ -55,4 +57,10 @@ public abstract class Conta {
                 ", banco='" + banco + '\'' +
                 '}';
     }
+    public void tranferir(Conta outra, double valor){
+        this.sacar(valor);
+        outra.depositar(valor);
+    }
 }
+
+

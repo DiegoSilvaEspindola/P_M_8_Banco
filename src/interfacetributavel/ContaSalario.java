@@ -16,17 +16,24 @@ public class ContaSalario extends Conta implements Tributos {
     }
 
     @Override
-    public double getSaldo() {
+    public void depositar(double valor) {
+        this.saldo = this.saldo + valor;
+    }
+
+    @Override
+    public double consultaSaldo() {
         return this.saldo;
     }
 
     @Override
-    public void taxaMnutencao(int valor) {
+    public void taxaMnutencao(double valor) {
 
+        this.saldo = this.saldo - valor;
     }
 
     @Override
     public void impostoRenda(double valor) {
-
+        taxaMnutencao(valor);
+       // this.saldo = this.saldo - valor;
     }
 }

@@ -21,7 +21,12 @@ public class ContaPoupanca extends Conta{
     }
 
     @Override
-    public double getSaldo() {
+    public void depositar(double valor) {
+        this.saldo = this.saldo + valor;
+    }
+
+    @Override
+    public double consultaSaldo() {
         if (diaAniversario == 25){
             this.saldo = this.saldo + this.saldo * jurosDaConta;
             return this.saldo;
