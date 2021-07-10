@@ -3,12 +3,11 @@ package interfacetributavel;
 
 public class ContaPoupanca extends Conta{
 
-    private int diaAniversario;
-    private double jurosDaConta = 0.9;
-
-    public ContaPoupanca(Integer numeroConta, int agenciaConta, String banco, double saldo, int diaAniversario) {
+    private double taxaJuros;
+    public ContaPoupanca(Integer numeroConta, int agenciaConta, String banco, double saldo, double taxaJuros) {
         super(numeroConta, agenciaConta, banco, saldo);
-        this.diaAniversario = diaAniversario;
+        this.taxaJuros = taxaJuros;
+
     }
 
     @Override
@@ -19,19 +18,20 @@ public class ContaPoupanca extends Conta{
             System.out.println("Saldo insuficiente ");
         }
     }
+    public void determinaSaldo(){
+        this.saldo = this.saldo + this.saldo*taxaJuros;
+    }
+
 
     @Override
     public void depositar(double valor) {
         this.saldo = this.saldo + valor;
     }
 
+
+
     @Override
-    public double consultaSaldo() {
-        if (diaAniversario == 25){
-            this.saldo = this.saldo + this.saldo * jurosDaConta;
-            return this.saldo;
-          } else{
-            return this.saldo;
-        }
+    public double getSaldo() {
+        return this.saldo;
     }
 }

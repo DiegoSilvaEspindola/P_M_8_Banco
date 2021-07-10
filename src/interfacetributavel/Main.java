@@ -1,26 +1,53 @@
 package interfacetributavel;
 
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String args []){
+    public static void main (String args []) {
 
-        Scanner entrada = new Scanner (System.in);
+        Banco banco = new Banco();
+        Gerente gerente = new Gerente();
+        Scanner teclado = new Scanner (System.in);
 
-        List<Conta> clientes = new LinkedList<>();
 
-        ContaCorrente ccAndreLuiz = new ContaCorrente(0101, 01,"bb", 1500, 1000);
 
-        ContaSalario csAndreLuiz = new ContaSalario(101010, 0101, "Itaú", 2500);
+        int opcao = 0;
 
-        ContaPoupanca cpCarlos = new ContaPoupanca(02021, 0123, "Bradesco", 999, 25);
+        do{
+            System.out.println("  MENU DE OPÇOES ");
+            System.out.println("1- Criar conta corrente");
+            System.out.println("2- Criar conta salário");
+            System.out.println("3- Criar conta poupança");
+            System.out.println("4- Transferencia");
+            System.out.println("5- Mostrar montante");
+            System.out.println("6- Sair");
+            System.out.println("Escolha a opção desejada");
 
-        ContaCorrente ccDaniel = new ContaCorrente(0321, 012, "NuBnac", 2350, 3500);
+            switch (opcao){
+                case 1:
+                    banco.criaCC(01, 01, "BB",250,1000);
+                    break;
+                case 2:
+                    banco.criaCS(0222, 01, "NuBank", 2500 );
+                    break;
+                case 3:
+                    banco.criaCP(0123, 001, "Itaú", 1000, 0.05);
+                    break;
+                case 4:
+                   // banco.tranferir(ContaSalario, ContaCorrente, 350);
+                    break;
+                case 5:
+                    banco.saldoTotal();
+                    break;
+                case 6:
+                    System.out.println("Saindo");
+                    opcao = 6;
 
-       System.out.println( ccAndreLuiz.consultaSaldo());
+            }
 
-     }
+
+
+        } while (opcao != 6);
+    }
 }

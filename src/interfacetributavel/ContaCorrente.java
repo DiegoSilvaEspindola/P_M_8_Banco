@@ -2,10 +2,11 @@ package interfacetributavel;
 
 public class ContaCorrente extends Conta implements Tributos {
 
-    private int diaDaCobranca = 1;
-    private double limite;
+
+    protected double limite;
     public ContaCorrente(Integer numeroConta, int agenciaConta, String banco, double saldo, double limite) {
         super(numeroConta, agenciaConta, banco, saldo);
+        this.limite = limite;
     }
 
     @Override
@@ -23,15 +24,15 @@ public class ContaCorrente extends Conta implements Tributos {
         this.saldo = this.saldo + valor;
     }
 
-    @Override
-    public double consultaSaldo() {
 
-        double total = this.saldo + this.limite;
-        return total ;
+    public double getSaldo() {
+
+
+        return (this.saldo + this.limite) ;
     }
 
     @Override
-    public void taxaMnutencao(double valor) {
+    public void taxaManutencao(double valor) {
         this.saldo = this.saldo - valor;
 
     }
@@ -46,7 +47,7 @@ public class ContaCorrente extends Conta implements Tributos {
     @Override
     public String toString() {
         return   "ContaCorrente{" +
-                "diaDaCobranca=" + diaDaCobranca +
+                "diaDaCobranca="  +
                 ", limite=" + limite +
                 ", saldo=" + saldo +
                 '}';
